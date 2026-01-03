@@ -1,0 +1,79 @@
+\documentclass[final]{beamer}
+
+% =========================================================
+% Preamble - Load all settings from separate files
+% =========================================================
+\input{preamble/packages}
+\input{preamble/fonts}
+\input{preamble/colors}
+\input{preamble/header}
+
+% =========================================================
+% Document Body
+% =========================================================
+\begin{document}
+\begin{frame}{}
+    \vspace{-0.3cm}
+    
+    % Three Column Layout
+    \begin{columns}[t]
+        
+        % ---------------------------------------------------------
+        % COLUMN 1: Sections 1-5
+        % ---------------------------------------------------------
+        \begin{column}{0.31\paperwidth}
+            
+            \input{sections/sec01_background}
+            \vspace{0.3cm}
+            
+            \input{sections/sec02_contributions}
+            \vspace{0.3cm}
+            
+            \input{sections/sec03_problem}
+            \vspace{0.3cm}
+            
+            \input{sections/sec04_model}
+            \vspace{0.3cm}
+            
+            \input{sections/sec05_temporal}
+            
+        \end{column}
+
+        % ---------------------------------------------------------
+        % COLUMN 2: Sections 6-9
+        % ---------------------------------------------------------
+        \begin{column}{0.31\paperwidth}
+            
+            \input{sections/sec06_algorithm}
+            \vspace{0.3cm}
+            
+            \input{sections/sec07_sbc}
+            \vspace{0.3cm}
+            
+            \input{sections/sec08_bcrf}
+            \vspace{0.3cm}
+
+            \input{sections/sec09_results}
+            
+        \end{column}
+
+        % ---------------------------------------------------------
+        % COLUMN 3: Sections 10-13
+        % ---------------------------------------------------------
+        \begin{column}{0.31\paperwidth}
+
+            \input{sections/sec10_cost_effectiveness}
+            \vspace{0.3cm}
+
+            \input{sections/sec11_insights}
+            \vspace{0.3cm}
+            
+            \input{sections/sec12_conclusions}
+            \vspace{0.3cm}
+
+            \input{sections/sec13_references}
+
+        \end{column}
+    \end{columns}
+\end{frame}
+\end{document}

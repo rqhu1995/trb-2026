@@ -1,0 +1,22 @@
+% Section 10: Cost-Effectiveness of Repairers
+\begin{block}{10. Cost-Effectiveness of Repairers}
+    \textbf{Indicator $\nu$:} Ratio of dissatisfaction reduction to repairer wage
+    \[
+    \nu = \frac{c^p \sum_{i \in S}(\widehat{F}_i - \widehat{F}'_i)}{\varpi \cdot T / 3600}
+    \]
+    $\nu > 1$: Cost-effective \hspace{1cm} $\nu < 1$: Not cost-effective
+    
+    \vspace{0.3cm}
+    \centering
+    \begin{tabular}{cc}
+        \includegraphics[width=0.48\linewidth]{figures/cost_effectiveness_l10.jpeg} &
+        \includegraphics[width=0.48\linewidth]{figures/cost_effectiveness_l30.jpeg} \\
+        {\small $\ell=10\%$: Never effective} & {\small $\ell=30\%$: Threshold 401s} \\[0.3cm]
+        \includegraphics[width=0.48\linewidth]{figures/cost_effectiveness_l50.jpeg} &
+        \includegraphics[width=0.48\linewidth]{figures/cost_effectiveness_l90.jpeg} \\
+        {\small $\ell=50\%$: Threshold 492s} & {\small $\ell=90\%$: Threshold 580s} \\
+    \end{tabular}
+    
+    \vspace{0.2cm}
+    {\small Higher broken ratio ($\ell$) $\rightarrow$ repairers effective at longer repair times}
+\end{block}

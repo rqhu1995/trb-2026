@@ -1,0 +1,51 @@
+% =========================================================
+% Custom Headline Template
+% =========================================================
+\setbeamertemplate{headline}{
+  \leavevmode
+  \vskip-3pt
+  \begin{beamercolorbox}[wd=\paperwidth,ht=7cm,dp=0.3cm,leftskip=1cm,rightskip=1cm]{headline}
+    \vskip0.4cm
+    \begin{columns}[c]
+      % Left Column: Conference Logo/Name
+      \begin{column}{.12\paperwidth}
+        \centering
+        {\fontsize{32}{36}\selectfont \textbf{TRB 2026}}\\[0.2cm]
+        {\Large Annual Meeting}\\[0.1cm]
+        {\large Washington, D.C.}
+      \end{column}
+      
+      % Center Column: Title and Authors
+      \begin{column}{.76\paperwidth}
+        \centering
+        {\fontsize{52}{58}\selectfont \textbf{Repositioning in Bike Sharing Systems with}}\\[0.3cm]
+        {\fontsize{52}{58}\selectfont \textbf{Broken Bikes Considering On-site Repairs}}\\[0.5cm]
+        {\Large Runqiu Hu$^{1}$, W.Y. Szeto$^{1,2,3}$, Sin C. Ho$^{4}$}\\[0.3cm]
+        {\normalsize $^{1}$Dept. of Civil Engineering, HKU \quad 
+        $^{2}$HKU Shenzhen Institute of Research and Innovation \quad
+        $^{3}$GD-HK-Macau Joint Lab for Smart Cities \quad
+        $^{4}$CUHK}
+      \end{column}
+      
+      % Right Column: Paper Info
+      \begin{column}{.12\paperwidth}
+        \centering
+        {\normalsize \textbf{Transportation Research}}\\
+        {\normalsize \textbf{Part E} (2025)}\\[0.2cm]
+        {\small DOI: 10.1016/j.tre.2025.104155}
+      \end{column}
+    \end{columns}
+    \vskip0.2cm
+  \end{beamercolorbox}
+  
+  % Gold accent line below header
+  \begin{beamercolorbox}[wd=\paperwidth,ht=0.25cm]{accent}
+    {\color{AccentGold}\rule{\paperwidth}{0.25cm}}
+  \end{beamercolorbox}
+}
+
+% Remove default footline
+\setbeamertemplate{footline}{}
+
+% Remove navigation symbols
+\setbeamertemplate{navigation symbols}{}
