@@ -1,0 +1,52 @@
+% Section 3: Our Approach - THE SOLUTION
+\begin{block}{\Large Our Approach}
+    
+    \vspace{0.2cm}
+    \textbf{We developed two solution methods:}
+    
+    \vspace{0.3cm}
+    \begin{columns}[t]
+        \begin{column}{0.48\linewidth}
+            \centering
+            \colorbox{HKUGreen!10}{\parbox{0.95\linewidth}{
+            \vspace{0.2cm}
+            \centering
+            \textbf{Exact Method}\\[0.1cm]
+            {\small Mathematical Optimization}\\[0.2cm]
+            \begin{itemize}
+                \item Time-indexed model
+                \item Tracks bikes \& repairers
+                \item Minimizes dissatisfaction
+            \end{itemize}
+            \vspace{0.1cm}
+            {\footnotesize \textcolor{MediumGray}{For small networks (< 50 stations)}}
+            \vspace{0.1cm}
+            }}
+        \end{column}
+        \begin{column}{0.48\linewidth}
+            \centering
+            \colorbox{AccentGold!15}{\parbox{0.95\linewidth}{
+            \vspace{0.2cm}
+            \centering
+            \textbf{Fast Algorithm}\\[0.1cm]
+            {\small Hybrid Genetic Search}\\[0.2cm]
+            \begin{itemize}
+                \item Scales to 500+ stations
+                \item Smart time allocation
+                \item Near-optimal solutions
+            \end{itemize}
+            \vspace{0.1cm}
+            {\footnotesize \textcolor{MediumGray}{For real-world city networks}}
+            \vspace{0.1cm}
+            }}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.3cm}
+    \centering
+    \includegraphics[width=0.92\linewidth]{figures/fig_3_2_temporal_illustration.png}
+    
+    \vspace{0.15cm}
+    {\small \textbf{How it works:} The model tracks bike inventory changes over time as trucks and repairers visit stations.}
+    
+\end{block}

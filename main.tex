@@ -9,69 +9,50 @@
 \input{preamble/header}
 
 % =========================================================
-% Document Body
+% Document Body - Redesigned for clarity and visual flow
+% Following TRB Poster Guidelines: 3-4 main concepts,
+% 50% text / 50% graphics, clear left-to-right flow
 % =========================================================
 \begin{document}
 \begin{frame}{}
-    \vspace{-0.3cm}
+    \vspace{-0.5cm}
     
-    % Three Column Layout
+    % Three Column Layout with clear narrative flow
     \begin{columns}[t]
         
         % ---------------------------------------------------------
-        % COLUMN 1: Sections 1-5
+        % COLUMN 1: THE PROBLEM (Why does this matter?)
         % ---------------------------------------------------------
         \begin{column}{0.31\paperwidth}
             
-            \input{sections/sec01_background}
-            \vspace{0.3cm}
+            \input{sections/sec01_problem_overview}
+            \vspace{0.2cm}
             
-            \input{sections/sec02_contributions}
-            \vspace{0.3cm}
-            
-            \input{sections/sec03_problem}
-            \vspace{0.3cm}
-            
-            \input{sections/sec04_model}
-            \vspace{0.3cm}
-            
-            \input{sections/sec05_temporal}
+            \input{sections/sec02_research_gap}
             
         \end{column}
 
         % ---------------------------------------------------------
-        % COLUMN 2: Sections 6-9
+        % COLUMN 2: THE SOLUTION (What did we do?)
         % ---------------------------------------------------------
         \begin{column}{0.31\paperwidth}
             
-            \input{sections/sec06_algorithm}
-            \vspace{0.3cm}
+            \input{sections/sec03_approach}
+            \vspace{0.2cm}
             
-            \input{sections/sec07_sbc}
-            \vspace{0.3cm}
-            
-            \input{sections/sec08_bcrf}
-            \vspace{0.3cm}
-
-            \input{sections/sec09_results}
+            \input{sections/sec04_key_innovation}
             
         \end{column}
 
         % ---------------------------------------------------------
-        % COLUMN 3: Sections 10-13
+        % COLUMN 3: THE IMPACT (What did we find?)
         % ---------------------------------------------------------
         \begin{column}{0.31\paperwidth}
 
-            \input{sections/sec10_cost_effectiveness}
-            \vspace{0.3cm}
+            \input{sections/sec05_results}
+            \vspace{0.2cm}
 
-            \input{sections/sec11_insights}
-            \vspace{0.3cm}
-            
-            \input{sections/sec12_conclusions}
-            \vspace{0.3cm}
-
-            \input{sections/sec13_references}
+            \input{sections/sec06_takeaways}
 
         \end{column}
     \end{columns}
