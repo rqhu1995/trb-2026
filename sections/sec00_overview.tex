@@ -1,0 +1,10 @@
+% Section 0: Study at a Glance
+\begin{block}{0. Study at a Glance}
+    \begin{itemize}
+        \item \textbf{Question:} How should trucks and on-site repairers be co-optimized to keep bikes available while limiting emissions?
+        \item \textbf{Approach:} Time-indexed MILP + Hybrid Genetic Search with Station Budget Constraint to route trucks, load/unload bikes, and allocate repair time.
+        \item \textbf{Context:} 2-hour horizon, trucks carry usable and broken bikes, repairers fix on-site; dissatisfaction and CO$_2$ drive the objective.
+        \item \textbf{Performance:} \textbf{4--33\%} better solutions than Gurobi in \textbf{6--51s}; scales to \textbf{500 stations}.
+        \item \textbf{Key takeaway:} On-site repairers pay off when damage ratio $\geq 30\%$ and repair time $<10$ minutes; otherwise trucks alone suffice.
+    \end{itemize}
+\end{block}
