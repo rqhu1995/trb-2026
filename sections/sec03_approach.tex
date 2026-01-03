@@ -1,52 +1,58 @@
 % Section 3: Our Approach - THE SOLUTION
-\begin{block}{\Large Our Approach}
+\begin{block}{\Large Our Approach: Hybrid Genetic Search Algorithm}
     
     \vspace{0.2cm}
-    \textbf{We developed two solution methods:}
+    \textbf{Two-Part Problem Framework:}
     
-    \vspace{0.3cm}
+    \vspace{0.2cm}
     \begin{columns}[t]
         \begin{column}{0.48\linewidth}
             \centering
             \colorbox{HKUGreen!10}{\parbox{0.95\linewidth}{
-            \vspace{0.2cm}
+            \vspace{0.15cm}
             \centering
-            \textbf{Exact Method}\\[0.1cm]
-            {\small Mathematical Optimization}\\[0.2cm]
+            \textbf{Part 1: Route Decision}\\[0.1cm]
+            {\small Local Search Operators}\\[0.15cm]
             \begin{itemize}
-                \item Time-indexed model
-                \item Tracks bikes \& repairers
-                \item Minimizes dissatisfaction
+                \item Crossover generates offspring routes
+                \item Education via local search
+                \item Improves route quality
             \end{itemize}
-            \vspace{0.1cm}
-            {\footnotesize \textcolor{MediumGray}{For small networks (< 50 stations)}}
             \vspace{0.1cm}
             }}
         \end{column}
         \begin{column}{0.48\linewidth}
             \centering
             \colorbox{AccentGold!15}{\parbox{0.95\linewidth}{
-            \vspace{0.2cm}
+            \vspace{0.15cm}
             \centering
-            \textbf{Fast Algorithm}\\[0.1cm]
-            {\small Hybrid Genetic Search}\\[0.2cm]
+            \textbf{Part 2: Quantity Assignment}\\[0.1cm]
+            {\small SBC Allocation}\\[0.15cm]
             \begin{itemize}
-                \item Scales to 500+ stations
-                \item Smart time allocation
-                \item Near-optimal solutions
+                \item Station-Budget-Constrained
+                \item Loading/unloading/repairing
+                \item Completes solution evaluation
             \end{itemize}
-            \vspace{0.1cm}
-            {\footnotesize \textcolor{MediumGray}{For real-world city networks}}
             \vspace{0.1cm}
             }}
         \end{column}
     \end{columns}
     
-    \vspace{0.3cm}
+    \vspace{0.25cm}
+    \begin{center}
+        \colorbox{HKUGreen!15}{\parbox{0.95\linewidth}{\centering
+        \vspace{0.1cm}
+        {\normalsize \textbf{Key Highlight:} Maintains both \textbf{feasible} and \textbf{infeasible} solutions in the population}\\
+        {\small Infeasible solutions explored $\rightarrow$ repaired $\rightarrow$ may become feasible}
+        \vspace{0.1cm}
+        }}
+    \end{center}
+    
+    \vspace{0.25cm}
     \centering
-    \includegraphics[width=0.92\linewidth]{figures/fig_3_2_temporal_illustration.png}
+    \includegraphics[width=0.98\linewidth]{figures/algorithm_1_hgsadc_sbc.png}
     
     \vspace{0.15cm}
-    {\small \textbf{How it works:} The model tracks bike inventory changes over time as trucks and repairers visit stations.}
+    {\small \textbf{HGSADC-SBC:} Routes optimized via local search, then quantities assigned using SBC allocation.}
     
 \end{block}
