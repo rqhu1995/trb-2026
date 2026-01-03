@@ -1,0 +1,22 @@
+# LaTeX auxiliary files
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.out
+*.snm
+*.synctex.gz
+*.toc
+*.bbl
+*.blg
+*.run.xml
+*-blx.bib
+
+# Generated PDF (keep source, regenerate)
+# main.pdf
+
+# Temporary files
+*.tmp
+*~
+.DS_Store

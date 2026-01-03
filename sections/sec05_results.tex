@@ -1,0 +1,41 @@
+% Section 5: Results - WHAT DID WE FIND
+\begin{block}{\Large Results: Algorithm Performance}
+    
+    \vspace{0.2cm}
+    \textbf{Comparison with Commercial Solver (Gurobi):}
+    
+    \vspace{0.2cm}
+    \centering
+    \includegraphics[width=0.92\linewidth]{figures/table_5_4_results.png}
+    
+    \vspace{0.25cm}
+    \begin{columns}[c]
+        \begin{column}{0.48\linewidth}
+            \centering
+            \colorbox{HKUGreen!15}{\parbox{0.9\linewidth}{\centering
+            \vspace{0.2cm}
+            {\LARGE \textbf{4--33\%}}\\[0.1cm]
+            {\small Better solution quality}\\
+            {\footnotesize (lower user dissatisfaction)}
+            \vspace{0.2cm}
+            }}
+        \end{column}
+        \begin{column}{0.48\linewidth}
+            \centering
+            \colorbox{AccentGold!20}{\parbox{0.9\linewidth}{\centering
+            \vspace{0.2cm}
+            {\LARGE \textbf{6--51 sec}}\\[0.1cm]
+            {\small vs. over 2 hours}\\
+            {\footnotesize Computation time}
+            \vspace{0.2cm}
+            }}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.3cm}
+    \begin{center}
+        {\normalsize \textbf{Scales to real cities:} Tested on networks with up to \textbf{500 stations}}\\[0.1cm]
+        {\small (Gurobi fails for networks larger than 200 stations)}
+    \end{center}
+    
+\end{block}
