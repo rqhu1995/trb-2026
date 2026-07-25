@@ -1,69 +1,97 @@
-% Section 6: Takeaways - PRACTICAL IMPACT
-\begin{block}{\Large Practical Takeaways for Operators}
-    
-    \vspace{0.2cm}
-    \textbf{When should you deploy on-site repairers?}
-    
-    \vspace{0.2cm}
-    \begin{columns}[c]
-        \begin{column}{0.48\linewidth}
-            \centering
-            \includegraphics[width=0.9\linewidth]{figures/cost_effectiveness_l30.jpeg}
-            \\[0.1cm]
-            {\footnotesize 30\% broken bikes}
-        \end{column}
-        \begin{column}{0.48\linewidth}
-            \centering
-            \includegraphics[width=0.9\linewidth]{figures/cost_effectiveness_l50.jpeg}
-            \\[0.1cm]
-            {\footnotesize 50\% broken bikes}
-        \end{column}
-    \end{columns}
-    
-    \vspace{0.25cm}
-    \colorbox{AlertRed!15}{\parbox{0.95\linewidth}{
-    \vspace{0.15cm}
-    \centering
-    \textbf{Key Decision Rules:}
-    \begin{itemize}
-        \item \textbf{< 20\% broken:} Trucks alone sufficient
-        \item \textbf{> 30\% broken:} On-site repairers cost-effective
-        \item \textbf{Repair time > 11 min:} Never cost-effective
-    \end{itemize}
-    \vspace{0.1cm}
-    }}
-    
-    \vspace{0.25cm}
-    \begin{center}
-        \colorbox{HKUGreen!15}{\parbox{0.95\linewidth}{\centering
+% Section 6: Conclusions & Future Work
+\begin{block}{\fontsize{46}{54}\selectfont 6. Conclusions \& Future Work}
+    \vspace{0.5cm}
+    % Two columns: Text left, QR codes right
+    \begin{minipage}[t]{0.54\linewidth}
+        \vspace{0pt}
+        
+        % Conclusions
+        {\fontsize{42}{50}\selectfont \textbf{Conclusions:}}
+        \vspace{0.5cm}
+        
+        {\fontsize{38}{46}\selectfont
+        \begin{tabular}{@{}c@{\hspace{0.5cm}}p{0.88\linewidth}@{}}
+            \ding{51} & Joint truck + on-site repair routing reduces dissatisfaction and emissions. \\[0.5cm]
+            \ding{51} & HGSADC--SBC scales to \textbf{500 stations} with \textbf{seconds-level} runtime. \\[0.5cm]
+            \ding{51} & On-site repairers are cost-effective when the broken ratio is \textbf{> 30\%} and the average repair time is \textbf{< 11 min}. \\[0.5cm]
+        \end{tabular}}
+        
+        \vspace{0.4cm}
+        
+        % Future Research
+        {\fontsize{42}{50}\selectfont \textbf{Future research:}}
+        \vspace{0.5cm}
+        
+        {\fontsize{38}{46}\selectfont
+        \begin{tabular}{@{}c@{\hspace{0.5cm}}p{0.88\linewidth}@{}}
+            \ding{72} & Dynamic rebalancing with time-varying demand \& stochastic breakdowns. \\[0.5cm]
+            \ding{72} & Predictive maintenance scheduling \& rostering. \\[0.5cm]
+            \ding{72} & Dynamic repairer deployment should adapt to different damage levels. \\[0.5cm]
+        \end{tabular}}
+        
         \vspace{0.1cm}
-        {\normalsize \textbf{Bottom Line:} Invest in preventive maintenance to keep repair times low.}
-        \vspace{0.1cm}
-        }}
-    \end{center}
-    
-    \vspace{0.2cm}
-    \hrule
-    \vspace{0.2cm}
-    
-    % References and Contact
-    \begin{columns}[c]
-        \begin{column}{0.62\linewidth}
-            {\footnotesize \textbf{Reference:} Hu, R., Szeto, W.Y., \& Ho, S.C. (2025). Repositioning in bike sharing systems with broken bikes considering on-site repairs. \textit{Transportation Research Part E}, 195, 104155.}
+        
+        % Questions welcome + publication info
+        \colorbox{AccentGold!20}{%
+            \parbox{0.96\linewidth}{%
+                \centering
+                \vspace{0.5cm}
+                {\fontsize{44}{52}\selectfont \textbf{Questions \& discussions are welcome!}}\\[0.4cm]
+                {\fontsize{32}{40}\selectfont This research has been published in \textit{Transportation Research Part E} 201, 104155.}
+                \vspace{0.5cm}
+            }%
+        }
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.44\linewidth}
+        \vspace{0pt}
+        \centering
+        
+        % Two QR codes side by side - enlarged
+        \begin{minipage}[t]{0.48\linewidth}
+            \centering
+            {\fontsize{36}{44}\selectfont \textbf{Full Paper}}\\[0.2cm]
+            {\fontsize{28}{34}\selectfont (open access)}
             
-            \vspace{0.1cm}
-            {\footnotesize \textbf{Acknowledgments:} NSFC (71771194), RGC Hong Kong (17206322)}
-        \end{column}
-        \begin{column}{0.33\linewidth}
+            \vspace{0.4cm}
+            \qrcode[height=11cm]{https://doi.org/10.1016/j.tre.2025.104155}
+            
+            \vspace{0.4cm}
+            {\fontsize{26}{32}\selectfont \textbf{DOI:}}\\[0.15cm]
+            {\fontsize{24}{30}\selectfont \texttt{10.1016/j.tre.2025.104155}}
+        \end{minipage}%
+        \hfill
+        \begin{minipage}[t]{0.48\linewidth}
             \centering
-            % PLACEHOLDER: QR Code for paper
-            \fbox{\parbox{0.7\linewidth}{\centering\vspace{0.5cm}
-            \textit{[QR Code]}\\
-            \textit{Scan for paper}
-            \vspace{0.5cm}}}
-            \\[0.1cm]
-            {\footnotesize DOI: 10.1016/j.tre.2025.104155}
-        \end{column}
-    \end{columns}
-    
+            {\fontsize{36}{44}\selectfont \textbf{Let's Connect!}}\\[0.2cm]
+            {\fontsize{28}{34}\selectfont \faLinkedin~~ LinkedIn}
+            
+            \vspace{0.4cm}
+            \qrcode[height=11cm]{https://www.linkedin.com/in/runqiu-hu-ba6171141/}
+            
+            \vspace{0.4cm}
+            {\fontsize{26}{32}\selectfont \textbf{Runqiu Hu}}\\[0.15cm]
+            {\fontsize{24}{30}\selectfont The University of Hong Kong}
+        \end{minipage}
+        
+        \vspace{0.8cm}
+        
+        % Acknowledgments
+        \colorbox{DarkSlate!10}{%
+            \parbox{0.96\linewidth}{%
+                \vspace{0.5cm}
+                \centering
+                {\fontsize{36}{44}\selectfont \textbf{Acknowledgments}}\\[0.4cm]
+                \raggedright
+                \hspace{0.4cm}{\fontsize{26}{32}\selectfont \textit{This research was supported by:}}\\[0.3cm]
+                \hspace{0.4cm}{\fontsize{24}{30}\selectfont
+                $\bullet$~~ National Natural Science Foundation of China (71771194)\\[0.25cm]
+                \hspace{0.4cm}$\bullet$~~ Research Grants Council of Hong Kong (17206322)\\[0.25cm]
+                \hspace{0.4cm}$\bullet$~~ HKU University Research Committee (2202100693)\\[0.35cm]
+                \hspace{0.4cm}\textit{We thank the anonymous reviewers for their constructive comments.}}
+                \vspace{0.5cm}
+            }%
+        }
+    \end{minipage}
+    \vspace{0.2cm}
 \end{block}

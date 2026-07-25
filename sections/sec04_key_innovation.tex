@@ -1,31 +1,269 @@
-% Section 4: Key Innovation - WHAT'S NEW
-\begin{block}{\Large Key Innovation: Smart Time Allocation}
-    
-    \vspace{0.2cm}
-    \textbf{The Problem:} Spending too much time at early stations leaves no time for later ones.
-    
-    \vspace{0.25cm}
-    \textbf{Our Solution: Station Budget Constraint}
-    \begin{itemize}
-        \item Each station gets a \textbf{time budget} based on its potential benefit
-        \item Stations with more broken bikes get more time
-        \item Unused time \textbf{redistributed} to later stations
-    \end{itemize}
-    
-    \vspace{0.25cm}
+% Section 4: Key Innovation - SBC & BCRF
+\begin{block}{\fontsize{46}{54}\selectfont 4. Key Innovation: Station-Budget-Constrained (SBC) Allocation}
+
+% =========================================================
+% A. Before vs After (what goes wrong, what SBC fixes)
+% =========================================================
+\noindent
+\begin{minipage}[t]{0.485\linewidth}
     \centering
-    \includegraphics[width=0.92\linewidth]{figures/fig_4_1_bcrf_illustration.png}
-    
-    \vspace{0.2cm}
-    {\small \textbf{Prioritizing stations:} Heatmaps show dissatisfaction levels. Darker colors indicate higher priority for service.}
-    
-    \vspace{0.25cm}
-    \begin{center}
-        \colorbox{AccentGold!20}{\parbox{0.9\linewidth}{\centering
-        \vspace{0.15cm}
-        \textbf{Result:} Better service across all stations, not just the first few.
-        \vspace{0.15cm}
-        }}
-    \end{center}
-    
+    {\fontsize{38}{46}\selectfont \textbf{\textcolor{AlertRed}{Greedy (No Cap)}}}
+
+    \vspace{0.3cm}
+    {\fontsize{30}{36}\selectfont Service time share across stations}
+
+    \vspace{0.3cm}
+    \begin{tikzpicture}[x=2.6cm,y=0.11cm,transform shape]
+        % Fix bounding box so the "Greedy" and "SBC" mini-charts have identical height
+        \path[use as bounding box] (-0.8,-15) rectangle (5.6,95);
+        % Greedy with route Depot->3->1->2: Stn3=80%, Stn1=15%, Stn2=5%
+        \fill[AlertRed!55] (0,0) rectangle (1.1,15);
+        \fill[AlertRed!35] (1.7,0) rectangle (2.8,5);
+        \fill[AlertRed!80] (3.4,0) rectangle (4.5,80);
+
+        \node[font=\fontsize{28}{34}\selectfont\bfseries,text=AlertRed,anchor=south] at (0.55,15) {15\%};
+        \node[font=\fontsize{28}{34}\selectfont\bfseries,text=AlertRed,anchor=south] at (2.25,5) {5\%};
+        \node[font=\fontsize{28}{34}\selectfont\bfseries,text=AlertRed,anchor=south] at (3.95,80) {80\%};
+
+        \node[font=\fontsize{26}{32}\selectfont] at (0.55,-10) {Stn1};
+        \node[font=\fontsize{26}{32}\selectfont] at (2.25,-10) {Stn2};
+        \node[font=\fontsize{26}{32}\selectfont] at (3.95,-10) {Stn3};
+
+        \draw[DarkSlate!55,line width=2pt] (-0.3,0) -- (4.6,0);
+        
+        % Annotation for Station 2 - high BCRF but lowest share (left side)
+        \node[
+            anchor=east,
+            font=\fontsize{26}{32}\selectfont,
+            text=DarkSlate,
+            align=left,
+            fill=white,
+            draw=DarkSlate!60,
+            line width=1.5pt,
+            rounded corners=4pt,
+            inner sep=7pt
+        ] (ann2) at (2.9,42) {High BCRF\\but only 5\% service \\ time allocated!};
+        \draw[-{Stealth[length=3mm,width=2.5mm]},line width=1.5pt,DarkSlate!70] 
+            (ann2.south) -- (2.25,10);
+        
+        % Annotation for Station 3 - low BCRF but highest share (RIGHT side)
+        \node[
+            anchor=west,
+            font=\fontsize{26}{32}\selectfont,
+            text=AlertRed!80!black,
+            align=left,
+            fill=AlertRed!10,
+            draw=AlertRed!70,
+            line width=1.5pt,
+            rounded corners=4pt,
+            inner sep=7pt
+        ] (ann3) at (5.65,85) {Low BCRF\\but 80\% service \\ time allocated!};
+        \draw[-{Stealth[length=3mm,width=2.5mm]},line width=1.5pt,AlertRed!70] 
+            (ann3.west) -- (4.45,82);
+    \end{tikzpicture}
+
+    \vspace{0.3cm}
+    \textcolor{AlertRed}{\fontsize{28}{34}\selectfont \ding{55} Early stations consume the remaining service time}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.485\linewidth}
+    \centering
+    {\fontsize{38}{46}\selectfont \textbf{\textcolor{HKUGreen}{SBC (With Cap)}}}
+
+    \vspace{0.3cm}
+    {\fontsize{30}{36}\selectfont Service time share across stations}
+
+    \vspace{0.3cm}
+    \begin{tikzpicture}[x=2.6cm,y=0.11cm,transform shape]
+        % Fix bounding box so the "Greedy" and "SBC" mini-charts have identical height
+        \path[use as bounding box] (-0.4,-15) rectangle (4.8,95);
+        % SBC based on BCRF: Stn1=14%, Stn2=82%, Stn3=4%
+        \fill[HKUGreen!55] (0,0) rectangle (1.1,14);
+        \fill[HKUGreen!70] (1.7,0) rectangle (2.8,82);
+        \fill[HKUGreen!45] (3.4,0) rectangle (4.5,4);
+
+        \node[font=\fontsize{28}{34}\selectfont\bfseries,text=HKUGreen!80!black,anchor=south] at (0.55,14) {14\%};
+        \node[font=\fontsize{28}{34}\selectfont\bfseries,text=HKUGreen!80!black,anchor=south] at (2.25,82) {82\%};
+        \node[font=\fontsize{28}{34}\selectfont\bfseries,text=HKUGreen!80!black,anchor=south] at (3.95,4) {4\%};
+
+        \node[font=\fontsize{26}{32}\selectfont] at (0.55,-10) {Stn1};
+        \node[font=\fontsize{26}{32}\selectfont] at (2.25,-10) {Stn2};
+        \node[font=\fontsize{26}{32}\selectfont] at (3.95,-10) {Stn3};
+
+        \draw[DarkSlate!55,line width=2pt] (-0.3,0) -- (4.6,0);
+        
+        % Annotation for Station 2 - highest BCRF
+        \node[
+            anchor=west,
+            font=\fontsize{26}{32}\selectfont,
+            text=AccentGold!90!black,
+            align=left,
+            fill=AccentGold!15,
+            draw=AccentGold,
+            line width=1.5pt,
+            rounded corners=5pt,
+            inner sep=7pt
+        ] (annotation) at (6.0,108) {Highest BCRF\\$\Rightarrow$ worth investing};
+        
+        % Arrow from annotation to bar
+        \draw[-{Stealth[length=3mm,width=2.5mm]},line width=1.5pt,AccentGold!80!black] 
+            (annotation.south west) -- (2.65,85);
+    \end{tikzpicture}
+
+    \vspace{0.3cm}
+    \textcolor{HKUGreen}{\fontsize{28}{34}\selectfont \ding{51} All stations are guaranteed nonzero service}
+\end{minipage}
+
+\vspace{0.5cm}
+
+\colorbox{AccentGold!18}{\parbox{0.98\linewidth}{
+    \vspace{0.15cm}
+    {\fontsize{32}{40}\selectfont \textbf{Key idea:} Use \textbf{BCRF} to pre-allocate \textbf{station-level service-time budgets} and enforce them as caps.}
+    \vspace{0.15cm}
+}}
+
+\vspace{0.6cm}
+
+% =========================================================
+% B. Step 1 & Step 2 (BCRF + budget allocation)
+% =========================================================
+\noindent
+\begin{minipage}[t]{0.54\linewidth}
+    {\fontsize{36}{44}\selectfont \textbf{Step 1: Compute Benefit--Cost Ratio Function}}
+
+    \vspace{0.3cm}
+    \colorbox{HKUGreen!10}{\parbox{0.97\linewidth}{\centering
+        \vspace{0.4cm}
+        {\fontsize{38}{46}\selectfont
+        $\displaystyle
+        BCRF_s^{\text{t}}(p,b)=\frac{F_s(p,b)-F_s(q,0)}{t^{load}\cdot\bigl(|q-p|+b\bigr)}
+        $}
+        \vspace{0.4cm}
+    }}
+
+    \vspace{0.3cm}
+    {\fontsize{28}{34}\selectfont
+    \begin{tabular}{@{}p{0.47\linewidth}@{\hspace{0.35cm}}p{0.47\linewidth}@{}}
+        \textbf{$F_s(\cdot)$}: dissat. at station $s$ &
+        \textbf{$t^{load}$}: per-bike handling time \\[0.15cm]
+        \textbf{$q$}: target usable bike inventory &
+        \textbf{$p$}: current usable bike inventory \\[0.15cm]
+        \textbf{$b$}: broken bikes handled & \\
+    \end{tabular}
+    }
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.44\linewidth}
+    {\fontsize{36}{44}\selectfont \textbf{Step 2: Allocate station budgets}}
+
+    \vspace{0.3cm}
+    \colorbox{HKUGreen!10}{\parbox{0.97\linewidth}{\centering
+        \vspace{0.4cm}
+        {\fontsize{38}{46}\selectfont
+        $\displaystyle
+        B_s = T^\text{svc}\cdot\frac{BCRF_s}{\sum_{j\in \mathcal{R}} BCRF_j}
+        $}
+        \vspace{0.4cm}
+    }}
+
+    \vspace{0.3cm}
+    {\fontsize{28}{34}\selectfont
+    \begin{tabular}{@{}p{0.5\linewidth}@{\hspace{0.35cm}}p{0.47\linewidth}@{}}
+        \textbf{$T^\text{svc}$}: total service time budget &
+        \textbf{$\mathcal{R}$}: visited stations \\
+    \end{tabular}
+
+    \vspace{0.15cm}
+    Higher BCRF $\Rightarrow$ larger budget.
+    }
+\end{minipage}
+
+\vspace{0.4cm}
+
+\begin{center}
+    \begin{tikzpicture}[scale=1.0,transform shape]
+        % Total budget box - width 75
+        \fill[DarkSlate!12] (0,0) rectangle (75,2.4);
+        \draw[line width=2.2pt,DarkSlate] (0,0) rectangle (75,2.4);
+        \node[font=\fontsize{34}{42}\selectfont\bfseries] at (37.5,1.2) {Total Station Service-Time Budget $T^\text{svc}$ = 100 min};
+
+        % Station boxes — widths proportional to BCRF shares (0.14, 0.82, 0.04)
+        % Based on BCRF: Stn1=0.55, Stn2=3.15, Stn3=0.17 → normalized: 14%, 82%, 4%
+        % Total width 75, gaps ~1.5 each (total ~3.0), box space = ~72.0
+        % Stn 1: 0.14 × 72 = 10, Stn 2: 0.82 × 72 = 59, Stn 3: 0.04 × 72 = 3
+        % Stn 1: 0 to 10, Stn 2: 11.5 to 70.5, Stn 3: 72 to 75
+        \fill[HKUGreen!45] (0,-6.2) rectangle (10,-3.0);
+        \draw[line width=2.2pt,HKUGreen!80!black] (0,-6.2) rectangle (10,-3.0);
+        \draw[line width=5pt,AlertRed] (0,-3.0) -- (10,-3.0);
+        \node[font=\fontsize{28}{34}\selectfont\bfseries,align=center] at (5,-4.6) {Stn 1: 14 min};
+        \node[font=\fontsize{24}{30}\selectfont,text=HKUGreen!70!black,anchor=north] at (5,-6.5) {BCRF = 0.14};
+
+        \fill[HKUGreen!65] (11.5,-6.2) rectangle (70.5,-3.0);
+        \draw[line width=2.2pt,HKUGreen!80!black] (11.5,-6.2) rectangle (70.5,-3.0);
+        \draw[line width=5pt,AlertRed] (11.5,-3.0) -- (70.5,-3.0);
+        \node[font=\fontsize{30}{36}\selectfont\bfseries,align=center] at (41,-4.6) {Stn 2: 82 min};
+        \node[font=\fontsize{26}{32}\selectfont,text=HKUGreen!70!black,anchor=north] at (41,-6.5) {BCRF = 0.82};
+
+        \fill[HKUGreen!35] (72,-6.2) rectangle (75,-3.0);
+        \draw[line width=2.2pt,HKUGreen!80!black] (72,-6.2) rectangle (75,-3.0);
+        \draw[line width=5pt,AlertRed] (72,-3.0) -- (75,-3.0);
+        \node[font=\fontsize{22}{28}\selectfont\bfseries,align=center] at (73.5,-4.3) {Stn 3:\\ 4 min};
+        \node[font=\fontsize{20}{26}\selectfont,text=HKUGreen!70!black,anchor=north] at (73.5,-6.5) {BCRF = 0.04};
+
+        % Arrows — straight down from parent box to each station box (at box centers)
+        \draw[-{Stealth},line width=4pt,AccentGold] (5,-0.1) -- (5,-3.0);
+        \draw[-{Stealth},line width=4pt,AccentGold] (41,-0.1) -- (41,-3.0);
+        \draw[-{Stealth},line width=4pt,AccentGold] (73.5,-0.1) -- (73.5,-3.0);
+        
+        % Central label between parent and station boxes
+        \node[font=\fontsize{28}{34}\selectfont\bfseries,text=AccentGold,fill=white,inner sep=5pt] at (37.5,-1.55) {Allocate proportional to BCRF};
+        
+        % Red cap labels positioned above the red lines
+        \node[font=\fontsize{22}{28}\selectfont\bfseries,text=AlertRed] at (5,-3.35) {cap};
+        \node[font=\fontsize{24}{30}\selectfont\bfseries,text=AlertRed] at (41,-3.4) {cap};
+        \node[font=\fontsize{18}{24}\selectfont\bfseries,text=AlertRed] at (73.5,-3.32) {cap};
+    \end{tikzpicture}
+\end{center}
+
+\vspace{0.4cm}
+
+% =========================================================
+% C. Step 3 (cap changes the quantity assignment rule)
+% =========================================================
+{\fontsize{36}{44}\selectfont \textbf{Step 3: Quantity assignment (what changes)}}
+
+\vspace{0.25cm}
+{\fontsize{30}{36}\selectfont Actions must satisfy $t^\text{load}\cdot\bigl(|q-p|+b\bigr)\le \text{cap}$.}
+
+\vspace{0.4cm}
+\noindent
+\begin{minipage}[t]{0.485\linewidth}
+    \colorbox{AlertRed!8}{\parbox{0.97\linewidth}{\centering
+        \vspace{0.35cm}
+        {\fontsize{30}{36}\selectfont \textbf{Greedy:} cap = \colorbox{AlertRed!25}{\textbf{remaining time budget}}}
+
+        \vspace{0.25cm}
+        {\fontsize{28}{34}\selectfont $\Rightarrow$ early stations can still monopolize time.}
+        \vspace{0.35cm}
+    }}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.485\linewidth}
+    \colorbox{HKUGreen!8}{\parbox{0.97\linewidth}{\centering
+        \vspace{0.35cm}
+        {\fontsize{30}{36}\selectfont \textbf{SBC:} cap = \colorbox{HKUGreen!25}{\textbf{station budget $B_s$ (+carryover)}}}
+
+        \vspace{0.25cm}
+        {\fontsize{28}{34}\selectfont $\Rightarrow$ each station respects its budget cap.}
+        \vspace{0.35cm}
+    }}
+\end{minipage}
+
+\vspace{0.5cm}
+\colorbox{AccentGold!18}{\parbox{0.98\linewidth}{
+    \vspace{0.15cm}
+    {\fontsize{32}{40}\selectfont SBC makes greedy quantity assignment \textbf{fair} by adding a \textbf{station-level time cap} driven by BCRF.}
+    \vspace{0.15cm}
+}}
+
 \end{block}

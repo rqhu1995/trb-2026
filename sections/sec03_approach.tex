@@ -1,52 +1,199 @@
-% Section 3: Our Approach - THE SOLUTION
-\begin{block}{\Large Our Approach}
+% Section 3: Our Approach - Algorithm Framework
+\begin{block}{\fontsize{46}{54}\selectfont 3. Our Approach: HGS-ADC with SBC}
+    \hspace{0.01\linewidth}    
+    % ===== TOP: Algorithm Flowchart + Key Features (SINGLE ROW) =====
+    \begin{minipage}[t]{0.56\linewidth}
+        \vspace{0pt}
+        \centering
+        \includegraphics[width=\linewidth]{figures/hgsadc-flowchart.png}
+    \end{minipage}%
+    \hspace{0.05\linewidth}
+    \begin{minipage}[t]{0.46\linewidth}
+        \vspace{0pt}
+        {\fontsize{42}{50}\selectfont \textbf{Key Features:}}
+        
+        \vspace{0.8cm}
+        
+        \fcolorbox{HKUGreen}{HKUGreen!8}{\parbox{0.52\linewidth}{
+            \vspace{0.35cm}
+            {\fontsize{36}{44}\selectfont \textcolor{HKUGreen}{\ding{202}}~\textbf{Infeasible Population Kept}}\\[0.2cm]
+            {\fontsize{32}{40}\selectfont \hspace{0.6cm}Explore beyond feasible boundaries}
+            \vspace{0.35cm}
+        }}
+
+        \vspace{2.2cm}
+        
+        \fcolorbox{AccentGold}{AccentGold!8}{\parbox{0.52\linewidth}{
+            \vspace{0.25cm}
+            {\fontsize{36}{44}\selectfont \textcolor{AccentGold}{\ding{203}}~\textbf{Diversified Search}}\\[0.2cm]
+            {\fontsize{32}{40}\selectfont \hspace{0.6cm}Avoid premature convergence}
+            \vspace{0.25cm}
+        }}
+        
+        \vspace{2.2cm}
+        
+        \fcolorbox{AlertRed}{AlertRed!8}{\parbox{0.52\linewidth}{
+            \vspace{0.25cm}
+            {\fontsize{36}{44}\selectfont \textcolor{AlertRed}{\ding{204}}~\textbf{Adaptive Control}}\\[0.2cm]
+            {\fontsize{32}{40}\selectfont \hspace{0.6cm}Dynamic parameter adjustment}
+            \vspace{0.25cm}
+        }}
+    \end{minipage}
     
-    \vspace{0.2cm}
-    \textbf{We developed two solution methods:}
+    \vspace{0.5cm}
+    \hrule
+    \vspace{0.5cm}
     
-    \vspace{0.3cm}
-    \begin{columns}[t]
-        \begin{column}{0.48\linewidth}
-            \centering
-            \colorbox{HKUGreen!10}{\parbox{0.95\linewidth}{
+    % ===== MIDDLE: Route Decisions + Quantity Assignment =====
+    \noindent
+    \begin{minipage}[t]{0.42\linewidth}
+        \vspace{0pt}
+        {\fontsize{40}{48}\selectfont \textbf{\textcolor{HKUGreen}{1. Route Decisions}}}
+        
+        \vspace{0.25cm}
+        {\fontsize{30}{36}\selectfont Local Search: SWAP, 2-opt, Or-opt, Cross-exchange}
+        
+        \vspace{0.2cm}
+        \begin{center}
+        \resizebox{0.7\linewidth}{!}{%
+        \begin{tikzpicture}[
+            station/.style={circle, draw=HKUGreen, fill=white, minimum size=0.9cm, font=\small\bfseries, line width=1.2pt},
+            depot/.style={
+                rectangle, 
+                draw=DarkSlate, 
+                fill=white, 
+                minimum size=0.8cm, 
+                font=\small\bfseries, 
+                rounded corners=2pt, 
+                line width=1.2pt,
+                inner sep=4pt % <--- This leaves margin between text and node border
+            },
+            truckarrow/.style={-{Stealth[length=2.5mm]}, line width=1.2pt, HKUGreen},
+            repairarrow/.style={-{Stealth[length=2.5mm]}, line width=1.2pt, AlertRed, dashed}
+        ]
+            % Route: Depot -> 3 -> 1 -> 2 -> Depot (greedy visits low-BCRF station first)
+            \node[depot] (D) at (0,0) {Depot};
+            \node[station] (S3) at (3.5,0) {3};
+            \node[station] (S1) at (7,0) {1};
+            \node[station] (S2) at (10.5,0) {2};
+            
+            \draw[truckarrow] (D) -- (S3);
+            \draw[truckarrow] (S3) -- (S1);
+            \draw[truckarrow] (S1) -- (S2);
+            % Truck return: S2 -> down -> left -> up -> Depot
+            \draw[truckarrow] (S2.south) -- ++(0,-0.8) -| (D.south);
+            
+            % Repair D -> S3: from D.north east, up, right, down to S3.north west
+            \draw[repairarrow] ([xshift=-0.5cm]D.north east) |- (0.7,0.6) -| (S3.north west);
+            % Repair S3 -> S2: from S3.north east, up, right, down to S2.north west
+            \draw[repairarrow] (S3.north east) |- (3.9,1.1) -| (S2.north west);
+            % Repair S2 -> Depot: from S2.north east, up, left, down to D.north
+            \draw[repairarrow] (S2.north east) |- (10.85,1.6) -| (D.north);
+        \end{tikzpicture}%
+        }
+        \end{center}
+        
+        \vspace{0.4cm}
+        \noindent
+        {\fontsize{28}{34}\selectfont
+        \fcolorbox{HKUGreen}{HKUGreen!10}{\parbox{0.96\linewidth}{\centering\strut\textcolor{HKUGreen}{\textbf{Truck:}} Depot $\to$ 3 $\to$ 1 $\to$ 2 $\to$ Depot}}\\[0.2cm]
+        \fcolorbox{AlertRed}{AlertRed!10}{\parbox{0.96\linewidth}{\centering\strut\textcolor{AlertRed}{\textbf{Repairer:}} Depot $\to$ 3 $\to$ 2 $\to$ Depot}}}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.56\linewidth}
+        \vspace{0pt}
+        {\fontsize{40}{48}\selectfont \textbf{\textcolor{AlertRed}{2. Quantity Assignment}}}~~{\fontsize{30}{36}\selectfont \textit{The Hard Problem!}}
+        
+        \vspace{0.3cm}
+        
+        {\fontsize{32}{40}\selectfont
+        \renewcommand{\arraystretch}{1.6}
+        \begin{tabular}{@{}l|>{\centering\arraybackslash}p{0.24\linewidth}>{\centering\arraybackslash}p{0.24\linewidth}>{\centering\arraybackslash}p{0.24\linewidth}@{}}
+            & \textbf{Station 1} & \textbf{Station 2} & \textbf{Station 3} \\
+            \hline
+            \rowcolor{HKUGreen!10} \textcolor{HKUGreen}{\textbf{Truck}} & $u_1^+, u_1^-, b_1{=}?$ & $u_2^+, u_2^-, b_2{=}?$ & $u_3^+, u_3^-, b_3{=}?$ \\
+            \rowcolor{AlertRed!10} \textcolor{AlertRed}{\textbf{Repairer}} & $r_1{=}?$ & --- & $r_3{=}?$ \\
+        \end{tabular}
+        \renewcommand{\arraystretch}{1.0}}
+        
+        \vspace{0.2cm}
+        {\fontsize{28}{34}\selectfont
+        $u^+$: usable bikes loaded~~$u^-$: usable bikes unloaded~~$b$: broken bikes loaded~~$r$: broken bikes repaired}
+        
+        \vspace{0.8cm}
+        \fcolorbox{AccentGold}{AccentGold!15}{\parbox{0.96\linewidth}{
             \vspace{0.2cm}
-            \centering
-            \textbf{Exact Method}\\[0.1cm]
-            {\small Mathematical Optimization}\\[0.2cm]
-            \begin{itemize}
-                \item Time-indexed model
-                \item Tracks bikes \& repairers
-                \item Minimizes dissatisfaction
-            \end{itemize}
-            \vspace{0.1cm}
-            {\footnotesize \textcolor{MediumGray}{For small networks (< 50 stations)}}
-            \vspace{0.1cm}
-            }}
-        \end{column}
-        \begin{column}{0.48\linewidth}
-            \centering
-            \colorbox{AccentGold!15}{\parbox{0.95\linewidth}{
+            {\fontsize{36}{44}\selectfont Each station has \textbf{different sensitivity} to inventory changes}\\[0.15cm]
+            {\fontsize{36}{44}\selectfont \textbf{\ding{52} Solution: SBC Allocation with BCRF}}
             \vspace{0.2cm}
-            \centering
-            \textbf{Fast Algorithm}\\[0.1cm]
-            {\small Hybrid Genetic Search}\\[0.2cm]
-            \begin{itemize}
-                \item Scales to 500+ stations
-                \item Smart time allocation
-                \item Near-optimal solutions
-            \end{itemize}
-            \vspace{0.1cm}
-            {\footnotesize \textcolor{MediumGray}{For real-world city networks}}
-            \vspace{0.1cm}
-            }}
-        \end{column}
-    \end{columns}
+        }}
+    \end{minipage}
     
-    \vspace{0.3cm}
-    \centering
-    \includegraphics[width=0.92\linewidth]{figures/fig_3_2_temporal_illustration.png}
+    \vspace{0.5cm}
+    \hrule
+    \vspace{0.5cm}
     
-    \vspace{0.15cm}
-    {\small \textbf{How it works:} The model tracks bike inventory changes over time as trucks and repairers visit stations.}
+    % ===== BOTTOM: BCRF Explanation =====
+    {\fontsize{40}{48}\selectfont \textbf{BCRF: Benefit-Cost Ratio Function}}
     
+    \vspace{0.1cm}
+    \hspace{0.03\linewidth}
+    \begin{minipage}[t][0.98\height][t]{0.28\linewidth}
+        \vspace{0pt}%
+        \fcolorbox{AccentGold}{AccentGold!15}{\parbox{0.97\linewidth}{%
+            \vspace{0.15cm}
+            \centering{\fontsize{32}{38}\selectfont \textbf{Stn 1:}~~\textbf{Moderate}}\\[0.65cm]
+            \hspace{0.03\linewidth}%
+            \begin{minipage}[c]{0.38\linewidth} 
+                {\fontsize{30}{36}\selectfont $21.5{-}8.4{=}13.1$}\\[0.08cm]
+                {\fontsize{30}{36}\selectfont $\Rightarrow \mathbf{24}$ bikes}
+            \end{minipage}%
+            \hfill
+            \begin{minipage}[c]{0.54\linewidth}
+                \raggedleft
+                {\fontsize{30}{36}\selectfont $\text{BCRF}{=}\dfrac{13.1}{24}{=}\mathbf{0.55}$}
+            \end{minipage}
+            \hspace{0.03\linewidth}
+            \vspace{0.15cm}
+        }}\\[0.2cm]
+        \fcolorbox{AlertRed}{AlertRed!15}{\parbox{0.97\linewidth}{%
+            \vspace{0.15cm}
+            \centering{\fontsize{32}{38}\selectfont \textbf{Stn 2:}~~\textbf{High}}\\[0.65cm]
+            \hspace{0.03\linewidth}%
+            \begin{minipage}[c]{0.38\linewidth}
+                {\fontsize{30}{36}\selectfont $156.8{-}18.2{=}138.6$}\\[0.08cm]
+                {\fontsize{30}{36}\selectfont $\Rightarrow \mathbf{44}$ bikes}
+            \end{minipage}%
+            \hfill
+            \begin{minipage}[c]{0.54\linewidth}
+                \raggedleft
+                {\fontsize{30}{36}\selectfont $\text{BCRF}{=}\dfrac{138.6}{44}{=}\mathbf{3.15}$}
+            \end{minipage}
+            \hspace{0.03\linewidth}
+            \vspace{0.15cm}
+        }}\\[0.2cm]
+        \fcolorbox{HKUGreen}{HKUGreen!15}{\parbox{0.97\linewidth}{%
+            \vspace{0.15cm}
+            \centering{\fontsize{32}{38}\selectfont \textbf{Stn 3:}~~\textbf{Low}}\\[0.65cm]
+            \hspace{0.03\linewidth}%
+            \begin{minipage}[c]{0.38\linewidth}
+                {\fontsize{30}{36}\selectfont $7.7{-}0.8{=}6.9$}\\[0.08cm]
+                {\fontsize{30}{36}\selectfont $\Rightarrow \mathbf{41}$ bikes}
+            \end{minipage}%
+            \hfill
+            \begin{minipage}[c]{0.54\linewidth}
+                \raggedleft
+                {\fontsize{30}{36}\selectfont $\text{BCRF}{=}\dfrac{6.9}{41}{=}\mathbf{0.17}$}
+            \end{minipage}
+            \hspace{0.03\linewidth}
+            \vspace{0.15cm}
+        }}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t][0.98\height][t]{0.70\linewidth}
+        \vspace{0pt}%
+        \centering
+        \includegraphics[width=.88\linewidth]{figures/heatmap-of-eudf.png}
+    \end{minipage}
+
 \end{block}

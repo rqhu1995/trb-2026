@@ -1,52 +1,68 @@
 % =========================================================
-% Custom Headline Template
+% Custom Headline Template - Using TikZ for reliable positioning
 % =========================================================
 \setbeamertemplate{headline}{
-  \leavevmode
-  \vskip-3pt
-  \begin{beamercolorbox}[wd=\paperwidth,ht=6cm,dp=0.3cm,leftskip=1cm,rightskip=1cm]{headline}
-    \vskip0.3cm
-    \begin{columns}[c]
-      % Left Column: Conference Logo/Name
-      \begin{column}{.12\paperwidth}
-        \centering
-        {\fontsize{28}{32}\selectfont \textbf{TRB 2026}}\\[0.15cm]
-        {\large Annual Meeting}\\[0.1cm]
-        {\normalsize Washington, D.C.}
-      \end{column}
-      
-      % Center Column: Title and Authors
-      \begin{column}{.76\paperwidth}
-        \centering
-        {\fontsize{46}{52}\selectfont \textbf{Repositioning in Bike Sharing Systems with}}\\[0.25cm]
-        {\fontsize{46}{52}\selectfont \textbf{Broken Bikes Considering On-site Repairs}}\\[0.3cm]
-        {\normalsize \textcolor{AccentGold}{\textit{Optimizing truck routes and repairer deployment to reduce user dissatisfaction}}}\\[0.3cm]
-        {\large Runqiu Hu$^{1}$, W.Y. Szeto$^{1,2,3}$, Sin C. Ho$^{4}$}\\[0.2cm]
-        {\small $^{1}$Dept. of Civil Engineering, HKU \quad 
-        $^{2}$HKU Shenzhen Institute of Research and Innovation \quad
-        $^{3}$GD-HK-Macau Joint Lab for Smart Cities \quad
-        $^{4}$CUHK}
-      \end{column}
-      
-      % Right Column: Paper Info
-      \begin{column}{.12\paperwidth}
-        \centering
-        {\normalsize \textbf{Transportation Research}}\\
-        {\normalsize \textbf{Part E} (2025)}\\[0.2cm]
-        {\small DOI: 10.1016/j.tre.2025.104155}
-      \end{column}
-    \end{columns}
-    \vskip0.2cm
-  \end{beamercolorbox}
-  
-  % Gold accent line below header
-  \begin{beamercolorbox}[wd=\paperwidth,ht=0.25cm]{accent}
-    {\color{AccentGold}\rule{\paperwidth}{0.25cm}}
-  \end{beamercolorbox}
+  \begin{tikzpicture}[remember picture,overlay]
+    % Green header background (taller for 4×8ft canvas)
+    \fill[HKUGreen] (current page.north west) rectangle ([yshift=-11cm]current page.north east);
+    
+    % Gold accent line
+    \fill[AccentGold] ([yshift=-10.6cm]current page.north west) rectangle ([yshift=-11cm]current page.north east);
+    
+    % Left column - TRB badge
+    \node[anchor=north west, rounded corners=10pt, fill=white, fill opacity=0.15, text opacity=1, inner sep=18pt] 
+      at ([xshift=1.2cm,yshift=-1.0cm]current page.north west) {
+      \begin{tabular}{c}
+        {\color{AccentGold}\fontsize{30}{34}\selectfont\textbf{105TH ANNUAL}}\\[-0.05cm]
+        {\color{AccentGold}\fontsize{30}{34}\selectfont\textbf{MEETING}}\\[0.55cm]
+        {\color{white}\fontsize{66}{74}\selectfont\textbf{TRB 2026}}\\[0.5cm]
+        {\color{white}\fontsize{44}{50}\selectfont Washington, D.C.}\\[0.5cm]
+        {\color{white!80}\fontsize{34}{40}\selectfont January 11-15, 2026}
+      \end{tabular}
+    };
+    
+    % Center - Title and authors - adjusted position
+    \node[anchor=north, white, align=center] at ([yshift=-1.0cm]current page.north) {
+      {\fontsize{75}{85}\selectfont \textbf{Repositioning in Bike Sharing Systems with}}\\[0.2cm]
+      {\fontsize{75}{85}\selectfont \textbf{Broken Bikes Considering On-site Repairs}}\\[0.65cm]
+      {\fontsize{52}{58}\selectfont Runqiu Hu$^{1}$, Jia Cui$^{1}$, W.Y. Szeto$^{1,2,3}$}\\[0.18cm]
+      {\fontsize{34}{42}\selectfont $^{1}$Dept. of Civil Engineering, HKU \quad 
+      $^{2}$HKU Shenzhen Institute of Research and Innovation \quad 
+      $^{3}$GD-HK-Macau Joint Lab for Smart Cities}
+    };
+    
+    % Right column - Journal info
+    \node[anchor=north east] at ([xshift=-1.6cm,yshift=-1.0cm]current page.north east) {
+      \includegraphics[height=8cm]{HKU.png}
+    };
+  \end{tikzpicture}
 }
 
-% Remove default footline
-\setbeamertemplate{footline}{}
+% Custom footline with HKU Green background
+\setbeamertemplate{footline}{
+  \begin{tikzpicture}[remember picture,overlay]
+    % Green footer background - 2cm height
+    \fill[HKUGreen] (current page.south west) rectangle ([yshift=3cm]current page.south east);
+    
+    % Gold accent line at top of footer
+    \fill[AccentGold] ([yshift=2.9cm]current page.south west) rectangle ([yshift=3.3cm]current page.south east);
+    
+    % Left - Personal website
+    \node[anchor=west, white] at ([xshift=1cm,yshift=1.55cm]current page.south west) {
+      {\fontsize{44}{50}\selectfont \textbf{https://rqhu1995.github.io}}
+    };
+    
+    % Center - University name
+    \node[anchor=center, white] at ([yshift=1.55cm]current page.south) {
+      {\fontsize{44}{50}\selectfont \textbf{The University of Hong Kong}}
+    };
+    
+    % Right - Email
+    \node[anchor=east, white] at ([xshift=-1cm,yshift=1.55cm]current page.south east) {
+      {\fontsize{44}{50}\selectfont \textbf{runqiuhu@connect.hku.hk}}
+    };
+  \end{tikzpicture}
+}
 
 % Remove navigation symbols
 \setbeamertemplate{navigation symbols}{}

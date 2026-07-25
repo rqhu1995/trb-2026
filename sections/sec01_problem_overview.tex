@@ -1,36 +1,94 @@
-% Section 1: Problem Overview - THE CHALLENGE
-% Clear, visual introduction to the problem
-\begin{block}{\Large The Challenge: Bike Sharing Operations}
+% Section 1: Background, Motivation & Research Gap
+\begin{block}{\fontsize{46}{54}\selectfont 1. Background, Motivation \& Research Gap}
     
-    \vspace{0.2cm}
-    \begin{columns}[c]
-        \begin{column}{0.48\linewidth}
+    {\fontsize{40}{48}\selectfont \textbf{The Challenge:} Bike Sharing Systems (BSS) face critical operational issues:}
+    
+    \vspace{0.5cm}
+    \noindent
+    % Left: Two failure images stacked with key facts | Right: Citi Bike chart
+    \begin{minipage}[t]{0.54\linewidth}
+        \vspace{0pt}
+        % Two images side by side
+        \begin{minipage}[t]{0.48\linewidth}
             \centering
-            \textbf{\textcolor{AlertRed}{Demand Imbalance}}\\[0.2cm]
-            % PLACEHOLDER: Add illustration showing empty/full stations
-            \fbox{\parbox{0.9\linewidth}{\centering\vspace{0.6cm}
-            \textit{[Placeholder: Illustration of stations becoming empty or full during peak hours]}
-            \vspace{0.6cm}}}
-            \\[0.2cm]
-            {\small Stations become empty or full}\\
-            {\small $\rightarrow$ Users cannot pick up/return bikes}
-        \end{column}
-        \begin{column}{0.48\linewidth}
+            \fcolorbox{MediumGray}{white}{%
+                \includegraphics[width=0.94\linewidth,height=12cm,keepaspectratio]{figures/fail_rent.png}%
+            }
+            \vspace{0.2cm}
+            
+            {\fontsize{34}{40}\selectfont \textbf{Empty stations} $\rightarrow$ Cannot rent}
+        \end{minipage}%
+        \hfill
+        \begin{minipage}[t]{0.48\linewidth}
             \centering
-            \textbf{\textcolor{AlertRed}{Broken Bikes}}\\[0.2cm]
-            \includegraphics[width=0.85\linewidth]{figures/two-repair-modes.png}
-            \\[0.2cm]
-            {\small Barcelona: 67\% bikes damaged}\\
-            {\small NYC: 2\% need daily repairs}
-        \end{column}
-    \end{columns}
+            \fcolorbox{MediumGray}{white}{%
+                \includegraphics[width=0.94\linewidth,height=12cm,keepaspectratio]{figures/fail_return.png}%
+            }
+            \vspace{0.2cm}
+            
+            {\fontsize{34}{40}\selectfont \textbf{Full stations} $\rightarrow$ Cannot return}
+        \end{minipage}
+        
+        \vspace{1.8cm}
+        % Key facts as vertical list
+        {\fontsize{36}{44}\selectfont
+        \begin{itemize}[leftmargin=1.5cm, itemsep=1.5cm]
+            \item[•] Barcelona: 12\% severe + 55\% light damage
+            \item[•] New York: 2\% need repairs \textit{every day}
+            \item[•] Broken bikes occupy docks, reduce inventory
+        \end{itemize}}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.43\linewidth}
+        \vspace{0pt}
+        \centering
+        \fcolorbox{MediumGray}{white}{%
+            \includegraphics[width=0.95\linewidth,height=19cm,keepaspectratio]{figures/citibike_bicycle_repairs.png}%
+        }
+        
+        \vspace{0.3cm}
+        {\fontsize{36}{44}\selectfont Citi Bike: \textbf{21,637 bikes} repaired monthly}
+    \end{minipage}
     
-    \vspace{0.3cm}
-    \begin{center}
-        \colorbox{AccentGold!20}{\parbox{0.9\linewidth}{\centering
-        \textbf{Current solutions use trucks to relocate bikes between stations.}\\[0.1cm]
-        But what about \textbf{repairing bikes on-site}?
-        }}
-    \end{center}
+    \vspace{0.6cm}
+    \hrule
+    \vspace{0.6cm}
     
+    {\fontsize{40}{48}\selectfont \textbf{Research Gap:} How are broken bikes currently handled?}
+    
+    \vspace{0.5cm}
+    \noindent
+    % Two-column comparison with visual emphasis
+    \begin{minipage}[t]{0.47\linewidth}
+        \vspace{0pt}
+        \centering
+        \fcolorbox{AlertRed}{white}{%
+            \includegraphics[width=0.94\linewidth,height=16cm,keepaspectratio]{figures/off-site-repair.jpeg}%
+        }
+        
+        \vspace{0.4cm}
+        {\fontsize{38}{46}\selectfont \textbf{Off-site Repair} (Depot only)}\\[0.3cm]
+        {\fontsize{34}{42}\selectfont \textcolor{AlertRed}{$\blacktriangleleft$ \textbf{Existing studies focus here}}}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.47\linewidth}
+        \vspace{0pt}
+        \centering
+        \fcolorbox{HKUGreen}{white}{%
+            \includegraphics[width=0.94\linewidth,height=16cm,keepaspectratio]{figures/on-site-repair.jpeg}%
+        }
+        
+        \vspace{0.4cm}
+        {\fontsize{38}{46}\selectfont \textcolor{HKUGreen}{\textbf{On-site Repair}} (Field)}\\[0.3cm]
+        {\fontsize{34}{42}\selectfont \textcolor{HKUGreen}{$\blacktriangleright$ \textbf{Real-world practice}}}
+    \end{minipage}
+    
+    \vspace{0.6cm}
+    \colorbox{HKUGreen!15}{\parbox{0.98\linewidth}{\centering
+        \vspace{0.4cm}
+        {\fontsize{42}{50}\selectfont
+        \textbf{Our Innovation:} First to jointly optimize \textbf{Truck-based Repositioning} + \textbf{Repairer-based On-site Repairs}}
+        \vspace{0.4cm}
+    }}
+
 \end{block}

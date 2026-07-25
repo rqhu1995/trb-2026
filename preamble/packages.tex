@@ -1,7 +1,9 @@
 % =========================================================
 % Packages and Theme Setup
 % =========================================================
-\usepackage[orientation=landscape,size=a0,scale=1.0,debug]{beamerposter}
+% TRB poster board: 8 ft (wide) × 4 ft (high) = 96 in × 48 in = 243.84 cm × 121.92 cm
+% NOTE: beamerposter expects width/height numbers in cm (it appends 'cm' internally).
+\usepackage[orientation=landscape,size=custom,width=243.84,height=121.92,scale=1.0,debug]{beamerposter}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{amsmath}
@@ -10,7 +12,12 @@
 \usepackage{colortbl}
 \usepackage{multicol}
 \usepackage{tikz}
-\usetikzlibrary{shapes,arrows,positioning}
+\usetikzlibrary{shapes,arrows,arrows.meta,positioning,calc}
+\usepackage{adjustbox}  % For scaling content to fit fixed containers
+\usepackage{pifont}     % For \ding symbols (checkmarks, etc.)
+\usepackage{qrcode}     % For QR codes (paper link)
+\usepackage{fontawesome5} % For social media icons (LinkedIn, etc.)
+\usepackage{enumitem}   % For customizing list environments
 
 % Theme Choice - Using "default" to allow custom headers
 \mode<presentation>{\usetheme{default}}
